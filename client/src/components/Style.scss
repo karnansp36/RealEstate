@@ -85,3 +85,39 @@
         font-size: 13pt;
     }
 }
+
+
+
+
+
+/* Styles for extra small devices (phones) */
+@media only screen and (max-width: 320px) {
+
+
+}
+
+/* Styles for small devices (phones and small tablets) */
+@media only screen and (min-width: 321px) and (max-width: 768px) {
+
+
+
+}
+
+/* Styles for medium devices (tablets and small laptops) */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+
+
+
+}
+
+/* Styles for large devices (desktops and laptops) */
+@media only screen and (min-width: 1025px) and (max-width: 1440px) {
+
+
+}
+
+/* Styles for extra large devices (large desktops and high-resolution monitors) */
+@media only screen and (min-width: 1441px) {
+
+    
+}
