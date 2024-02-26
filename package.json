@@ -18,5 +18,8 @@
     "mongoose": "^8.1.1",
     "nodemon": "^3.0.3",
     "react-router-dom": "^6.22.0"
+  },
+  "devDependencies": {
+    "vite-plugin-sass": "^0.1.0"
   }
 }

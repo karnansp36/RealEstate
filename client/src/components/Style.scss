@@ -1,0 +1,87 @@
+
+    
+    @mixin flex-box{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    @mixin flex-spread{
+        display: flex;
+        justify-content: space-between;
+        align-items: center
+    }
+    @mixin flex-column{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+
+
+/* Style for Navbar */
+.navbar-container{
+    @include flex-box; 
+    width: 100vw;
+    height: 90px;
+    position: fixed;
+    top:0;
+    left:0;
+    background-color: rgb(232, 246, 255);
+    .navbar{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 90%;
+        .brand-container{
+            font-size: 18pt;
+            font-weight: 600;
+        }
+        .navlinks{
+            @include flex-spread;
+            width: 40%;
+            a{
+                font-size: 13pt;
+            }
+        }
+    }
+}
+
+
+/* Style for signUp page */
+.signup-container{
+    @include flex-box;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    .signup-wrapper{
+        @include flex-column;
+        width: 50%;
+        height: 50%;
+        border:1px solid rgb(160, 160, 160);
+        border-radius: 10px;
+    }
+    .signup-i{
+        width: 80%;
+        height: 40px;
+        margin-bottom: 30px;
+        border:none;
+        border-bottom: 1px solid gray;
+       
+    }
+    .signup-i:focus{
+        outline: none;
+    }
+    #signup-google{
+        width: 80%;
+        background-color: rgb(84, 175, 254);
+        color:white;
+    }
+    #signup{
+        width: 80%;
+        margin-bottom: 20px;
+        background-color: rgb(188, 0, 0);
+        color:white;
+        font-size: 13pt;
+    }
+}

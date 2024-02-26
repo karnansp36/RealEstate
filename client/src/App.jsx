@@ -1,6 +1,5 @@
 import { useState } from 'react'
-
-import './App.css'
+import './components/Style.scss';
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
 import Signup from './pages/Signup'
 import Signin from './pages/Signin'
@@ -9,19 +8,28 @@ import About from './pages/About'
 import Home from './pages/Home'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
     
-      Hello
+      <div className='navbar-container'>
+        <div className='navbar'>
+          <div className='brand-container'>
+            <div className='brand-name'>RealEstate</div>
+          </div>
+          <div className='navlinks'>
+            <Link to='/' className='homeLink'>Home</Link>
+            <Link to='/service' className='serviceLink'>Services</Link>
+            <Link to='/about' className='aboutLink'>About</Link>
+            <Link to='/signin' className='signinLink'>signin</Link>
+            <Link to='/signup' className='signupLink'>signup</Link>
+          </div>
+            
+        </div>
+      </div>
    
 
-        <Link to='/'>Home</Link>
-        <Link to='/service'>Services</Link>
-        <Link to='/about'>About</Link>
-        <Link to='/signin'>signin</Link>
-        <Link to='/signup'>signup</Link>
+        
         <Routes>
           <Route path='/' element={<Home/>}>Home</Route>
           <Route path='/service' element={<Service/>}>Services</Route>
