@@ -15,29 +15,38 @@ export default function Signup() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    const res = await fetch('/api/auth/signup', {
-      method:'POST',
-      headers:{
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData)
-    });
-
-    const data =await res.json();
-    if(data.success === false){
-      setError(data.message);
-      setLoading(false)
-      return;
+    try {
+      setLoading(true);
+      const res = await fetch('/api/auth/signup', {
+        method:'POST',
+        headers:{
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      });
+  
+      const data =await res.json();
+      if(data.success === false){
+        setError(data.message);
+        setLoading(false)
+        return;
+      }
+      setLoading(false);
+      setError(null);
+      Navigate('/signin');
+      
+    } catch (error) {
+      setLoading(false);
+      setError(error.message);
     }
-    setLoading(false);
-    Navigate('/signin');
-    console.log(data);
+   
   };
   return (
     <div>
       
       <div className='signup-container'>
+        <div className='signup-contain'>
+        
         <form onSubmit={handleSubmit} className='signup-wrapper'>
           <input type="text" name="username" placeholder='username' id="username" className='signup-i' onChange={handleChange}/>
           <input type="email" name="email" placeholder='email' id="email" className='signup-i' onChange={handleChange}/>
@@ -45,7 +54,9 @@ export default function Signup() {
           <button id='signup' disabled={loading}>{loading? 'Loading...' : 'Sign Up'}</button>
           </form>
           <button id='signup-google'>Sign Up with google</button> 
-          <div>already have account <a href="#">signin</a></div>
+          <div>already have account <Link to="signin">signin</Link></div>
+        
+        </div>
         
       </div>
       
