@@ -26,6 +26,7 @@ export default function Signup() {
       });
   
       const data =await res.json();
+      console.log(data);
       if(data.success === false){
         setError(data.message);
         setLoading(false)
@@ -57,7 +58,7 @@ export default function Signup() {
           <div>already have account <Link to="signin">signin</Link></div>
         
         </div>
-        
+        {error && <p className='error-text'>{error}</p>}
       </div>
       
     </div>
