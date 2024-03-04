@@ -6,27 +6,14 @@ import Signin from './pages/Signin'
 import Service from './pages/Service'
 import About from './pages/About'
 import Home from './pages/Home'
+import Navbar from './components/Navbar'
 
 function App() {
 
   return (
-    <>
+    <BrowserRouter>
     
-      <div className='navbar-container'>
-        <div className='navbar'>
-          <div className='brand-container'>
-            <div className='brand-name'>RealEstate</div>
-          </div>
-          <div className='navlinks'>
-            <Link to='/' className='homeLink'>Home</Link>
-            <Link to='/service' className='serviceLink'>Services</Link>
-            <Link to='/about' className='aboutLink'>About</Link>
-            <Link to='/signin' className='signinLink'>signin</Link>
-            <Link to='/signup' className='signupLink'>signup</Link>
-          </div>
-            
-        </div>
-      </div>
+        <Navbar/>
    
 
         
@@ -36,12 +23,10 @@ function App() {
           <Route path='/about' element={<About/>}>About</Route>
           <Route path='/signin' element={<Signin/>}>Signin</Route>
           <Route path='/signup' element={<Signup/>}>Signup</Route>
-
-
         </Routes>
       
 
-    </>
+    </BrowserRouter>
   )
 }
 

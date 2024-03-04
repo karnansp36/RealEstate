@@ -55,7 +55,7 @@ export default function Signup() {
           <button id='signup' disabled={loading}>{loading? 'Loading...' : 'Sign Up'}</button>
           </form>
           <button id='signup-google'>Sign Up with google</button> 
-          <div>already have account <Link to="signin">signin</Link></div>
+          <div>already have account <Link to="/signin">signin</Link></div>
         
         </div>
         {error && <p className='error-text'>{error}</p>}
