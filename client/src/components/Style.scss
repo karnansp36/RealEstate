@@ -97,6 +97,14 @@
     color:black;
 }
 
+.profile-img{
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    overflow: hidden;
+    object-fit: cover;
+}
+
 
 /* Styles for extra small devices (phones) */
 @media only screen and (max-width: 320px) {

@@ -7,6 +7,8 @@ import Service from './pages/Service'
 import About from './pages/About'
 import Home from './pages/Home'
 import Navbar from './components/Navbar'
+import PrivateRoute from './components/PrivateRoute';
+import Profile from './pages/Profile';
 
 function App() {
 
@@ -23,6 +25,9 @@ function App() {
           <Route path='/about' element={<About/>}>About</Route>
           <Route path='/signin' element={<Signin/>}>Signin</Route>
           <Route path='/signup' element={<Signup/>}>Signup</Route>
+          <Route element={<PrivateRoute/>}>
+            <Route path='/profile'element={<Profile/>}/>
+          </Route>
         </Routes>
       
 
