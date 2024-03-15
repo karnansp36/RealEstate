@@ -15,7 +15,11 @@ const userSchema = new mongoose.Schema({
         type:String,
         required:true
      
-    }
+    },
+    avatar:{
+        type:String,
+        default:"https://cdn-icons-png.flaticon.com/512/3641/3641963.png"
+    },
 }, {timestamps: true});  //this will add createdAt and updatedAt to the schema
 
 const User = mongoose.model('users', userSchema);
