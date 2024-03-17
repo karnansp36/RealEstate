@@ -165,15 +165,18 @@
             .link-container{
                 width: 80%;
                 @include flex-spread;
-                color:red;
+                color:rgb(254, 0, 0);
                 .delete-link{
                     cursor: pointer;
                 }
                 .delete-link:hover{
-                    color:black;
+                    color:rgba(255, 0, 0, 0.581);
                 }
                 .signout-link{
-
+                    cursor: pointer;
+                }
+                .signout-link:hover{
+                    color:rgba(255, 0, 0, 0.581);
                 }
             }
         }

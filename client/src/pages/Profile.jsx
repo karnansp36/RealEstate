@@ -2,7 +2,15 @@ import { useDispatch, useSelector } from "react-redux";
 import {useRef, useState , useEffect} from 'react';
 import { getDownloadURL, getStorage , ref, uploadBytesResumable} from 'firebase/storage';
 import {app} from '../firebase'
-import { updateUserStart, updateUserSuccess, updateUserFailure, deleteUserStart, deleteUserSuccess, deleteUserFailure } from "../redux/users/userSlice";
+import { updateUserStart,
+   updateUserSuccess,
+    updateUserFailure,
+     deleteUserStart,
+      deleteUserSuccess,
+       deleteUserFailure,
+      signOutUserStart,
+    signOutUserSuccess,
+  signOutUserFailure } from "../redux/users/userSlice";
 
 
 export default function Profile() {
@@ -105,6 +113,20 @@ export default function Profile() {
         dispatch(deleteUserFailure(error.message));
       }
     }
+
+    const handleSignOut = async() => {
+      try {
+        dispatch(signOutUserStart());
+        const res = await fetch('/api/auth/signout');
+        const data = await res.json();
+        if(data.success===false){
+          dispatch(signOutUserFailure(data.message));
+        }
+        dispatch(signOutUserSuccess(data));
+      } catch (error) {
+        dispatch(signOutUserFailure(error.message));
+      }
+    }
     //firebase storage
     // allow read;
     // allow write; if
@@ -137,7 +159,7 @@ export default function Profile() {
           <button className="update-btn" disabled={loading}>{loading ? 'Loading...' : 'Update'}</button>
           <div className="link-container">
             <span className="delete-link"  onClick={handleDeleteUser}>Delete Account</span>
-            <span className="signout-link">Signout</span>
+            <span className="signout-link" onClick={handleSignOut}>Signout</span>
           </div>
         </form>
         </div>
