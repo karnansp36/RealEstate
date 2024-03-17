@@ -54,12 +54,11 @@
     width: 100vw;
     height: 100vh;
     flex-direction: column;
-    background-color: rgb(95, 63, 63);
     .signup-contain{
         @include flex-column;
         width: 50%;
         border:1px solid rgb(232, 232, 232);
-        height: 60%;
+        height: 70%;
         border-radius: 5px;
     }
     .signup-wrapper{
@@ -177,7 +176,9 @@
         }
     }
 }
-
+.update-success{
+    color:green;
+}
 
 
 /* Styles for extra small devices (phones) */

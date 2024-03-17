@@ -1,16 +1,20 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {useRef, useState , useEffect} from 'react';
 import { getDownloadURL, getStorage , ref, uploadBytesResumable} from 'firebase/storage';
 import {app} from '../firebase'
+import { updateUserStart, updateUserSuccess, updateUserFailure } from "../redux/users/userSlice";
 
 
 export default function Profile() {
   const fileRef = useRef(null);
-    const {currentUser}  = useSelector((state) => state.user);
+    const {currentUser, loading, error}  = useSelector((state) => state.user);
     const [file, setFile] = useState(undefined);
     const [filePerc, setFilePerc ] = useState(0);
     const [fileUploadError, setFileUploadError ] =  useState(false);
     const [formData, setFormData] = useState({});
+    const [updateSuccess, setUpdateSuccess] = useState(false);
+    const dispatch = useDispatch();
+    console.log(formData);
     
     useEffect(()=>{
       if(file){
@@ -47,6 +51,39 @@ export default function Profile() {
       );
 
     }
+
+
+    const handleChange= (e) => {
+      setFormData({...formData, [e.target.id] : e.target.value });
+    };
+
+    const handleSubmit = async (e) =>{
+      e.preventDefault();
+      try {
+        dispatch(updateUserStart());
+        const res = await fetch(`/api/user/update/${currentUser._id}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      console.log(data);
+      if (data.success === false) {
+        dispatch(updateUserFailure(data.message));
+        return;
+      }
+
+      dispatch(updateUserSuccess(data));
+      setUpdateSuccess(true);
+        
+        
+      } catch (error) {
+        dispatch(updateUserFailure(error.message));
+      }
+    }
+
     //firebase storage
     // allow read;
     // allow write; if
@@ -59,7 +96,7 @@ export default function Profile() {
       
         <div className='profile-contain'>
         
-        <form  className='profile-wrapper'>
+        <form onSubmit={handleSubmit}  className='profile-wrapper'>
           <div className="profilePage-img">
             <input type="file" name="avatarfile" id="avatar" ref={fileRef} hidden accept="image/*" onChange={(e)=> setFile(e.target.files[0])}/>
             <img onClick={()=>fileRef.current.click()} src={formData.avatar || currentUser.avatar} className="avatar-img" alt="profile-image" />
@@ -73,21 +110,19 @@ export default function Profile() {
               : filePerc === 100 ? (<span className="upload-success">Image successfully uploaded</span>):(" ")
             }
           </div>
-          <input type="text" name="username" placeholder='username' id="username" className='profile-i' />
-          <input type="email" name="email" placeholder='email' id="email" className='profile-i' />
-          <input type="password" name="password" placeholder='password' id="password" className='profile-i'  />
-          <button className="update-btn">Update</button>
+          <input type="text" name="username" placeholder='username' id="username" className='profile-i' defaultValue={currentUser.username} onChange={handleChange}/>
+          <input type="email" name="email" placeholder='email' id="email" className='profile-i' defaultValue={currentUser.email}  onChange={handleChange}/>
+          <input type="password" name="password" placeholder='password' id="password" className='profile-i' onChange={handleChange} />
+          <button className="update-btn" disabled={loading}>{loading ? 'Loading...' : 'Update'}</button>
           <div className="link-container">
             <span className="delete-link">Delete Account</span>
             <span className="signout-link">Signout</span>
           </div>
         </form>
-          
-         
-        
         </div>
       
-      
+      <p>{ error ? error : ' '}</p>
+      <p className="update-success">{ updateSuccess ? 'User is updated successfully' : ''}</p>
     </div>
   )
 }
