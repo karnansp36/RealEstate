@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {useRef, useState , useEffect} from 'react';
 import { getDownloadURL, getStorage , ref, uploadBytesResumable} from 'firebase/storage';
 import {app} from '../firebase'
-import { updateUserStart, updateUserSuccess, updateUserFailure } from "../redux/users/userSlice";
+import { updateUserStart, updateUserSuccess, updateUserFailure, deleteUserStart, deleteUserSuccess, deleteUserFailure } from "../redux/users/userSlice";
 
 
 export default function Profile() {
@@ -84,6 +84,27 @@ export default function Profile() {
       }
     }
 
+    //Deleting the user account
+    const handleDeleteUser = async () =>{
+     
+
+      try {
+        dispatch(deleteUserStart());
+        
+        const res = await fetch(`/api/user/delete/${currentUser._id}`,{
+          method:"DELETE",          
+        })
+        const data =await res.json();
+
+        if(data.success ===false){
+          dispatch(deleteUserFailure(data.message));
+          return;
+        }
+        dispatch(deleteUserSuccess(data));
+      } catch (error) {
+        dispatch(deleteUserFailure(error.message));
+      }
+    }
     //firebase storage
     // allow read;
     // allow write; if
@@ -115,7 +136,7 @@ export default function Profile() {
           <input type="password" name="password" placeholder='password' id="password" className='profile-i' onChange={handleChange} />
           <button className="update-btn" disabled={loading}>{loading ? 'Loading...' : 'Update'}</button>
           <div className="link-container">
-            <span className="delete-link">Delete Account</span>
+            <span className="delete-link"  onClick={handleDeleteUser}>Delete Account</span>
             <span className="signout-link">Signout</span>
           </div>
         </form>

@@ -167,7 +167,10 @@
                 @include flex-spread;
                 color:red;
                 .delete-link{
-                    
+                    cursor: pointer;
+                }
+                .delete-link:hover{
+                    color:black;
                 }
                 .signout-link{
 
