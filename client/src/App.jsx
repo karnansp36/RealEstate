@@ -9,6 +9,7 @@ import Home from './pages/Home'
 import Navbar from './components/Navbar'
 import PrivateRoute from './components/PrivateRoute';
 import Profile from './pages/Profile';
+import Listing from './pages/Listing';
 
 function App() {
 
@@ -20,11 +21,12 @@ function App() {
 
         
         <Routes>
-          <Route path='/' element={<Home/>}>Home</Route>
-          <Route path='/service' element={<Service/>}>Services</Route>
-          <Route path='/about' element={<About/>}>About</Route>
-          <Route path='/signin' element={<Signin/>}>Signin</Route>
-          <Route path='/signup' element={<Signup/>}>Signup</Route>
+          <Route path='/' element={<Home/>}/>
+          <Route path='/service' element={<Service/>}/>
+          <Route path='/about' element={<About/>}/>
+          <Route path='/signin' element={<Signin/>}/>
+          <Route path='/signup' element={<Signup/>}/>
+          <Route path='/listing' element={<Listing/>}/>
           <Route element={<PrivateRoute/>}>
             <Route path='/profile'element={<Profile/>}/>
           </Route>

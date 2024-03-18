@@ -148,7 +148,7 @@
                 height: 50px;
                 border-radius: 10px;
                 padding-left: 20px;
-                
+               
                 border:1px solid rgb(203, 202, 202);
             }
             .update-btn{
@@ -161,6 +161,22 @@
                 border:none;
                 
             }
+            .create-listing{
+                width: 85%;
+                height: 50px;
+                @include flex-box;
+                background-color: rgb(205, 254, 254);
+                border-radius: 10px;
+                font-size: 14pt;
+                color:rgb(71, 28, 241);
+            }
+            .create-listing:hover{
+                background-color: rgb(169, 255, 244);
+                color:white;
+                border:none;
+                
+            }
+           
 
             .link-container{
                 width: 80%;
@@ -185,6 +201,169 @@
 .update-success{
     color:green;
 }
+
+
+
+
+
+
+
+
+
+/* Listing page Style. */
+.listing-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+
+.list-container {
+    margin-top: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    background-color: #ffffff;
+    font-family: Arial, sans-serif;
+    
+    .list-wrapper {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 800px;
+  
+      input[type="text"],
+      input[type="number"],
+      textarea,
+      input[type="file"],
+      button {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
+  
+        &:focus {
+          outline: none;
+          border-color: #007bff;
+        }
+      }
+  
+      textarea {
+        resize: vertical;
+        height: 100px;
+      }
+  
+      label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+  
+      .check-list-container {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 15px;
+  
+        label {
+          margin-right: 20px;
+        }
+      }
+  
+      .label-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        margin-bottom: 15px;
+  
+        label {
+          position: relative;
+  
+          input {
+            width: calc(100% - 10px); /* Adjusted width for input */
+          }
+  
+          .price-tag {
+            position: absolute;
+            bottom: -25px; /* Adjusted position for price tag */
+            left: 0;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            font-size: 14px;
+            color: #666;
+  
+            span {
+              display: inline-block;
+            }
+          }
+        }
+      }
+  
+      .img-description {
+        margin-bottom: 15px;
+        font-weight: bold;
+      }
+  
+      .listImg-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 15px;
+  
+        input[type="file"] {
+          width: 100%;
+          padding: 8px;
+          margin-bottom: 15px;
+        }
+  
+        button {
+          width: 100%;
+          background-color: #007bff;
+          color: #fff;
+          border: none;
+          padding: 10px;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+  
+          &:hover {
+            background-color: #0056b3;
+          }
+        }
+      }
+  
+      .listing-btn {
+        width: 100%;
+        background-color: #28a745;
+        color: #fff;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+  
+        &:hover {
+          background-color: #218838;
+        }
+      }
+    }
+  }
+  
+
+
+
+
+
 
 
 /* Styles for extra small devices (phones) */

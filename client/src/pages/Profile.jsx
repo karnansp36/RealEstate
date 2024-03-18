@@ -11,6 +11,7 @@ import { updateUserStart,
       signOutUserStart,
     signOutUserSuccess,
   signOutUserFailure } from "../redux/users/userSlice";
+import { Link } from "react-router-dom";
 
 
 export default function Profile() {
@@ -157,6 +158,7 @@ export default function Profile() {
           <input type="email" name="email" placeholder='email' id="email" className='profile-i' defaultValue={currentUser.email}  onChange={handleChange}/>
           <input type="password" name="password" placeholder='password' id="password" className='profile-i' onChange={handleChange} />
           <button className="update-btn" disabled={loading}>{loading ? 'Loading...' : 'Update'}</button>
+          <Link to='/listing' className="create-listing">Create Listing</Link>
           <div className="link-container">
             <span className="delete-link"  onClick={handleDeleteUser}>Delete Account</span>
             <span className="signout-link" onClick={handleSignOut}>Signout</span>
