@@ -260,7 +260,10 @@
     width: 100%;
     background-color: #ffffff;
     font-family: Arial, sans-serif;
-    
+    input[type='checkbox']{
+        width: 20px;
+        height: 20px;
+    }
     .list-wrapper {
       background-color: #fff;
       border-radius: 10px;
@@ -295,16 +298,20 @@
       }
   
       label {
-        display: block;
-        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
         font-weight: bold;
+        justify-content: center;
       }
   
       .check-list-container {
         display: flex;
         flex-wrap: wrap;
         margin-bottom: 15px;
-  
+        height: 40px;
+        align-content: center;
+        
         label {
           margin-right: 20px;
         }
@@ -319,9 +326,9 @@
         label {
           position: relative;
   
-          input {
-            width: calc(100% - 10px); /* Adjusted width for input */
-          }
+        //   input {
+        //     width: calc(100% - 10px); /* Adjusted width for input */
+        //   }
   
           .price-tag {
             position: absolute;
