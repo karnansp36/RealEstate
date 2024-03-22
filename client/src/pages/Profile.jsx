@@ -147,6 +147,23 @@ export default function Profile() {
         setShowListingsError(true);
       }
     }
+
+    const handleListingDelete = async(listingId) => {
+      try {
+        const res = await fetch(`/api/listing/delete/${listingId}`,{
+          method:'DELETE',
+
+        });
+        const data = await res.json();
+        if(data.success === false){
+          console.log(data.message);
+          return;
+        }
+        setUserListings((prev) => prev.filter((listing) =>listing._id !== listingId))
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
     //firebase storage
     // allow read;
     // allow write; if
@@ -205,11 +222,9 @@ export default function Profile() {
             </Link>
           </div>
           <div className="deleteEdit-btn">
-              <button className="delete-btn">Delete</button>
+              <button className="delete-btn" onClick={() =>handleListingDelete(listings._id)} >Delete</button>
               <button className="edit-btn">Edit</button>
-
           </div> 
-
         </div>
       ))}
       </div>
