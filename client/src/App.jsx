@@ -10,6 +10,7 @@ import Navbar from './components/Navbar'
 import PrivateRoute from './components/PrivateRoute';
 import Profile from './pages/Profile';
 import Listing from './pages/Listing';
+import UpdateListing from './pages/UpdateListing';
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
           <Route element={<PrivateRoute/>}>
             <Route path='/profile'element={<Profile/>}/>
             <Route path='/listing' element={<Listing/>}/>
+            <Route path='/update-listing/:listingId' element={<UpdateListing/>}/>
           </Route>
         </Routes>
       
