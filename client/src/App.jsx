@@ -17,16 +17,13 @@ function App() {
     <BrowserRouter>
     
         <Navbar/>
-   
 
-        
         <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path='/service' element={<Service/>}/>
           <Route path='/about' element={<About/>}/>
           <Route path='/signin' element={<Signin/>}/>
           <Route path='/signup' element={<Signup/>}/>
-          
           <Route element={<PrivateRoute/>}>
             <Route path='/profile'element={<Profile/>}/>
             <Route path='/listing' element={<Listing/>}/>

@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import {useRef, useState , useEffect} from 'react';
-import { getDownloadURL, getStorage , ref, uploadBytesResumable} from 'firebase/storage';
+import { getDownloadURL, getStorage , list, ref, uploadBytesResumable} from 'firebase/storage';
 import {app} from '../firebase'
 import { updateUserStart,
    updateUserSuccess,
@@ -22,6 +22,8 @@ export default function Profile() {
     const [fileUploadError, setFileUploadError ] =  useState(false);
     const [formData, setFormData] = useState({});
     const [updateSuccess, setUpdateSuccess] = useState(false);
+    const [showListingsError, setShowListingsError] = useState(false);
+    const [userListings, setUserListings] = useState([]);
     const dispatch = useDispatch();
     console.log(formData);
     
@@ -128,6 +130,23 @@ export default function Profile() {
         dispatch(signOutUserFailure(error.message));
       }
     }
+
+
+
+    const handleShowListings = async() =>{
+      try {
+        setShowListingsError(false);
+        const res = await fetch(`/api/user/listings/${currentUser._id}`);
+        const data= await res.json();
+        if(data.success === false){
+          setShowListingsError(true);
+          return;
+        }
+        setUserListings(data);
+      } catch (error) {
+        setShowListingsError(true);
+      }
+    }
     //firebase storage
     // allow read;
     // allow write; if
@@ -168,6 +187,34 @@ export default function Profile() {
       
       <p>{ error ? error : ' '}</p>
       <p className="update-success">{ updateSuccess ? 'User is updated successfully' : ''}</p>
+      <button onClick={handleShowListings}>Show Listings</button>
+      <p>{showListingsError? 'Error in Showing Listings': ''}</p>
+      
+            
+      {userListings && userListings.length > 0 &&
+      <div className="showListing-container">
+        <h2>Your  Listings</h2>
+      {userListings.map((listings) =>(
+        <div key={listings._id} className="single-listing">
+          <div className="name-listing">
+            <Link to={`/listings/${listings._id}`}>
+              <img src={listings.imageUrls[0]} alt="listing cover" className="img-cover" />
+            </Link>
+            <Link to={`/listings/${listings._id}`}>
+              <p className="title-cover">{listings.name}</p>
+            </Link>
+          </div>
+          <div className="deleteEdit-btn">
+              <button className="delete-btn">Delete</button>
+              <button className="edit-btn">Edit</button>
+
+          </div> 
+
+        </div>
+      ))}
+      </div>
+      }
+       
     </div>
   )
 }

@@ -93,6 +93,11 @@
 }
 
 
+
+
+
+
+/* Profile Page style */
 .error-text{
     color:black;
 }
@@ -106,7 +111,8 @@
 
 .profile-container{
     width: 100vw;
-    height: 100vh;
+    height: auto;
+    margin-top: 90px;
     @include flex-column;
     .profilePage-img{
         width: 80px;
@@ -144,16 +150,18 @@
             }
 
             .profile-i{
-                width: 80%;
+                width: calc(80% - 20px);
                 height: 50px;
                 border-radius: 10px;
+                margin: 20px 0;
                 padding-left: 20px;
-               
+
                 border:1px solid rgb(203, 202, 202);
             }
             .update-btn{
-                width: 85%;
+                width: 80%;
                 font-size: 14pt;
+                margin: 20px 0;
             }
             .update-btn:hover{
                 background-color: rgb(0, 0, 0);
@@ -162,13 +170,14 @@
                 
             }
             .create-listing{
-                width: 85%;
+                width: 80%;
                 height: 50px;
                 @include flex-box;
                 background-color: rgb(205, 254, 254);
                 border-radius: 10px;
                 font-size: 14pt;
                 color:rgb(71, 28, 241);
+                margin: 20px 0;
             }
             .create-listing:hover{
                 background-color: rgb(169, 255, 244);
@@ -216,7 +225,7 @@
     justify-content: center;
     align-items: center;
     width: 100vw;
-    height: 100%;
+    height: auto;
 }
 .title-listing{
     width: 100%;
@@ -398,9 +407,60 @@
   }
   
 
+.showListing-container{
+    height: auto;
+    width: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.single-listing{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    height: 150px;
+    margin: 20px;
+    .name-listing{
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        .img-cover{
+            width: 250px;
+            height: 150px;
+            margin-right: 20px;
+        }
+        .title-cover{
+            // width:calc(300px - 10%);
+            width: 100%;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            text-wrap: nowrap;
+            font-size: 14pt;
+            color:rgb(0, 0, 0);
+        }
+    }
+    .deleteEdit-btn{
+        width: 20%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        .delete-btn{
+            width: 100%;
+            background-color: red;
+            color:white;
+        }
+        .edit-btn{
+            width: 100%;
+            background-color: rgb(165, 240, 247);
 
+        }
+    }
 
-
+} 
 
 
 
