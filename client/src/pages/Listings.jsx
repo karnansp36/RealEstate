@@ -14,7 +14,7 @@ import {
     FaParking,
     FaShare,
   } from 'react-icons/fa';
-  import Contact from '../components/Contact';
+import Contact from '../components/Contact';
 
 
 
@@ -50,6 +50,8 @@ export default function Listings() {
         }
         fetchListing()
     },[params.listingId]);
+
+    
   return (
     <main className='main-listing'>
       {loading && <p className='loading-text'>Loading...</p>}
@@ -80,8 +82,7 @@ export default function Listings() {
               Link copied!
             </p>
           )}
-
-          
+      <div className='listing-detailsContainer'>
         <div className='userList-container'>
             <p className='userList-title'>
               {listing.name} - ${' '}
@@ -130,23 +131,20 @@ export default function Listings() {
                 {listing.furnished ? 'Furnished' : 'Unfurnished'}
               </li>
             </ul>
+            
             {currentUser && listing.userRef !== currentUser._id && !contact && (
-              <button
-                onClick={() => setContact(true)}
-                className='userList-contact'
-              >
-                Contact landlord
-              </button>
+              <div>
+                <button onClick={() => setContact(true)} className='userList-contact'>
+                  Contact landlord
+                </button>
+              </div>
             )}
             {contact && <Contact listing={listing} />}
           </div>
-        
+
+      </div>
         </>
        }
-
-
-
-
     </main>
   )
 }

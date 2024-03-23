@@ -12,7 +12,7 @@ export default function Navbar() {
            <div className='brand-container'>
               <div className='brand-name'>RealEstate</div>
            </div>
-           <input type='search'  placeholder="Search Properties"/>
+           {/* <input type='search'  placeholder="Search Properties"/> */}
            <div className='navlinks'>
               <Link to='/' className='homeLink'>Home</Link>
               <Link to='/service' className='serviceLink'>Services</Link>

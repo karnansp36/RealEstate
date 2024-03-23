@@ -437,7 +437,7 @@
         }
         .title-cover{
             // width:calc(300px - 10%);
-            width: 100%;
+            width: 300px;
             text-overflow: ellipsis;
             overflow: hidden;
             text-wrap: nowrap;
@@ -467,8 +467,12 @@
 } 
 
 
+
+
+
 .main-listing{
     margin-top: 90px;
+    
 }
 
 .slide-img{
@@ -497,13 +501,17 @@
     z-index:5;
     color:rgb(0, 195, 255);
 }
-
+.listing-detailsContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 .userList-container {
     padding: 20px;
-    border: 1px solid #ddd;
     border-radius: 8px;
     margin-bottom: 20px;
-  
+    width: 80%;
     .userList-title {
       font-size: 2rem;
       font-weight: bold;
@@ -566,12 +574,63 @@
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      
+      &:hover {
+        background-color: #0056b3; /* Example hover color for button */
+      }
+    }
+  }
+
+
+  .contact-container {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+  
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+  
+      .contact-username {
+        font-weight: bold;
+        color: #007bff; /* Example color for username */
+      }
+  
+      .contact-name {
+        font-style: italic;
+        color: #333; /* Example color for listing name */
+      }
+    }
+  
+    .contact-msg {
+      width: 100%;
+      margin-bottom: 15px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      resize: vertical; /* Allow vertical resizing of textarea */
+    }
+  
+    .contact-mail {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007bff; /* Example background color for button */
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
   
       &:hover {
         background-color: #0056b3; /* Example hover color for button */
       }
     }
   }
+  
+
+
   
 
 /* Styles for extra small devices (phones) */
