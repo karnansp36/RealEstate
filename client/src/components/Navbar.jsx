@@ -1,10 +1,34 @@
-import React from 'react';
+import  { useEffect, useState } from 'react';
 import {  Link } from 'react-router-dom'
 import './Style.scss'
 import { useSelector } from 'react-redux';
+import {
+  FaSearch
+} from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 export default function Navbar() {
   const {currentUser}= useSelector((state) => state.user);
+  const [searchTerm, setSearchTerm] = useState('');
+  const Navigate = useNavigate();
+  const handleSubmit = (e) =>{
+    e.preventDefault();
+    const urlParams = new URLSearchParams(window.location.search);
+    urlParams.set('searchTerm', searchTerm);
+    const searchQuery = urlParams.toString();
+    Navigate(`/search?${searchQuery}`);
+  }
+
+  useEffect(() =>{
+    const urlParams = new URLSearchParams(location.search);
+    const searchTermFromUrl = urlParams.get('searchTerm');
+    if(searchTermFromUrl){
+      setSearchTerm(searchTermFromUrl);
+    }
+
+  },[location.search]);
+
+
   return (
     <div>
       <div className='navbar-container'>
@@ -12,7 +36,12 @@ export default function Navbar() {
            <div className='brand-container'>
               <div className='brand-name'>RealEstate</div>
            </div>
-           {/* <input type='search'  placeholder="Search Properties"/> */}
+            <form onSubmit={handleSubmit}>
+                <input type="text" name="searchTerm" id="search" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+                <button className='searchBtn'>
+                  <FaSearch className='searchIcon'/>
+                </button>
+            </form>
            <div className='navlinks'>
               <Link to='/' className='homeLink'>Home</Link>
               <Link to='/service' className='serviceLink'>Services</Link>
