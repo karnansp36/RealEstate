@@ -175,170 +175,218 @@ useEffect(() =>{
     }
   };
   return (
-    <div className='listing-center'>
-         <div className='list-container'>
-            <form className='list-wrapper' onSubmit={handleSubmit}>
-                <h1 className='title-listing'>Update a Listing</h1>
-                <input 
-                type="text" 
-                name="product-name" 
-                id="name" 
-                className='list-name' 
-                placeholder='Name'
-                required
+    <div className="w-full h-full  mt-24 flex justify-center">
+      <div className="w-full h-full  flex flex-col justify-center items-center">
+        <h1 className="text-2xl font-bold mt-3 mb-5">Update a Listing</h1>
+        <form
+          className="flex flex-col md:border-2 md:rounded-lg md:flex-row md:w-4/5 p-5 w-full h-full md:h-4/5 justify-evenly items-start  "
+          onSubmit={handleSubmit}
+        >
+          <div className="flex flex-col w-full h-3/5 md:h-full me-4 justify-between ">
+            <input
+              type="text"
+              name="product-name"
+              id="name"
+              className="h-12 mb-5 rounded-lg ps-5 bg-sky-100"
+              placeholder="Name"
+              required
+              onChange={handleChange}
+              value={formData.name}
+            />
+
+            <textarea
+              name="list-description"
+              id="description"
+              cols="30"
+              rows="10"
+              className="h-48 mb-5 rounded-lg p-4 bg-sky-100"
+              placeholder="Description"
+              required
+              onChange={handleChange}
+              value={formData.description}
+            ></textarea>
+
+            <input
+              type="text"
+              name="product-address"
+              id="address"
+              className="h-12 mb-5 rounded-lg ps-5 bg-sky-100"
+              placeholder="Address"
+              required
+              onChange={handleChange}
+              value={formData.address}
+            />
+
+            <div className="w-full flex flex-wrap items-center ">
+              <div className="flex justify-center items-center mt-3">
+                <input
+                  type="checkbox"
+                  name="sell"
+                  id="sale"
+                  onChange={handleChange}
+                  checked={formData.type === "sale"}
+                  className="w-6 h-6 me-3 bg-sky-100"
+                />
+                <label className="text-lg me-5 font-sans font-semibold">Sell</label>
+              </div>
+              <div className="flex justify-center items-center mt-3">
+              <input
+                type="checkbox"
+                name="rent"
+                id="rent"
                 onChange={handleChange}
-                value={formData.name}
-                 />
+                checked={formData.type === "rent"}
+                className="w-6 h-6 me-3 bg-sky-100"
+              />
+              <label className="text-lg me-5 font-sans font-semibold">Rent</label>
 
-                <textarea 
-                name="list-description" 
-                id="description" 
-                cols="30" rows="10" 
-                className='list-description'
-                 placeholder='Description'
-                 required
-                 onChange={handleChange}
-                 value={formData.description}
-                 >
-                 </textarea>
+              </div>
+              <div className="flex justify-center items-center mt-3">
+              <input
+                type="checkbox"
+                name="parking"
+                id="parking"
+                onChange={handleChange}
+                checked={formData.parking}
+                className="w-6 h-6 me-3 bg-sky-100"
+              />
 
-                <input 
-                type="text"
-                 name="product-address" 
-                 id="address" 
-                 className='list-address' 
-                 placeholder='Address'
-                 required
-                 onChange={handleChange}
-                 value={formData.address}
-                 />
-                 
-                <div className='check-list-container'>
-                    <input 
-                    type="checkbox" 
-                    name="sell" 
-                    id="sale" 
+              <label className="text-lg me-5 font-sans font-semibold">Parking</label>
+              </div>
+
+              <div className="flex justify-center items-center mt-3">
+              <input
+                type="checkbox"
+                name="furnished"
+                id="furnished"
+                onChange={handleChange}
+                checked={formData.furnished}
+                className="w-6 h-6 me-3"
+              />
+              <label className="text-lg me-5 font-sans font-semibold">
+                Furnished
+              </label>
+              </div>
+
+              <div className="flex justify-center items-center mt-3">
+              <input
+                type="checkbox"
+                name="offer"
+                id="offer"
+                onChange={handleChange}
+                checked={formData.offer}
+                className="w-6 h-6 me-3 "
+              />
+              <label className="text-lg font-sans me-5 font-semibold">Offer</label>
+              </div>
+            </div>
+            <div className="h-[30%] w-4/5 mt-5 flex flex-col justify-between ">
+              <div className="flex w-full justify-between">
+                <label className="flex flex-col w-2/5 ">
+                  <span className="font-bold ">Beds</span>
+
+                  <input
+                    type="number"
+                    className="h-10 rounded-lg ps-5 bg-sky-100"
+                    name="list-beds"
                     onChange={handleChange}
-                    checked={formData.type === "sale"}
-                    className='sell-input' />
-                    <label className='sell-label'>Sell</label>
-                    
-                    <input 
-                    type="checkbox"
-                    name="rent"
-                    id="rent"
+                    value={formData.bedrooms}
+                    id="bedrooms"
+                  />
+                </label>
+                <label className="flex flex-col w-2/5">
+                  <span className="font-bold">Baths</span>
+                  <input
+                    type="number"
+                    className="h-10 rounded-lg ps-5 bg-sky-100"
+                    name="list-baths"
+                    id="bathrooms"
+                  />
+                </label>
+              </div>
+
+              <div className="flex mt-5 justify-between">
+                <label className="flex flex-col w-2/5">
+                  <span className="font-bold">Regular price</span>
+                  <input
+                    type="number"
+                    className="h-10 rounded-lg ps-5 bg-sky-100"
+                    name="list-regular"
                     onChange={handleChange}
-                    checked={formData.type === "rent"}
-                    className='rent-input' />
-                    <label className='rent-label'>Rent</label>
+                    value={formData.regularPrice}
+                    required
+                    id="regularPrice"
+                  />
+                </label>
+                {formData.offer && (
+                  <label className="flex flex-col w-2/5">
+                    <span className="font-bold text-nowrap">Discounted price</span>
+                    <input
+                      type="number"
+                      className="h-10 rounded-lg ps-5 bg-sky-100"
+                      name="list-discount"
+                      onChange={handleChange}
+                      value={formData.discountPrice}
+                      required
+                      id="discountPrice"
+                    />
+                  </label>
+                )}
+              </div>
+            </div>
+          </div>
 
-                        <input type="checkbox"
-                         name="parking" 
-                         id="parking" 
-                         onChange={handleChange}
-                         checked={formData.parking}
-                         className='parking-input' />
+         
+          <div className="w-full  flex flex-col pt-5 md:p-0 ">
+          <div className="w-full pb-1">
+            <span className="text-lg font-bold font-sans">Images:</span>
+            <span className="text-lg">The first images will be the cover (max 6):</span>
+          </div>
+            <input
+              type="file"
+              name="product-images"
+              id="imageUrls"
+              className=" bg-sky-100 rounded-lg p-2 mb-6 block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-md
+              file:border-0 file:text-sm file:font-semibold
+              file:bg-pink-50 file:text-sky-700
+              hover:file:bg-pink-100"
+              onChange={(e) => setFiles(e.target.files)}
+              accept="images/*"
+              multiple
+            />
 
-                    <label className='parking-label'>Parking</label>
-                        <input type="checkbox"
-                         name="furnished"
-                          id="furnished" 
-                          onChange={handleChange}
-                          checked={formData.furnished}
-                          className='furnished-input' />
-                    <label className='furnished-label'>Furnished</label>
-
-                        <input type="checkbox" 
-                        name="offer" 
-                        id="offer"
-                        onChange={handleChange}
-                        checked={formData.offer}
-                         className='offer-input' />
-                    <label className='offer-label'>Offer</label>
+            {formData.imageUrls.length > 0 &&
+              formData.imageUrls.map((url, index) => (
+                <div key={url} className="w-full 2xl:h-40 lg:h-28 mb-5 h-20 flex justify-between items-center">
+                  <img src={url} className="w-2/5 h-full object-cover" alt={`Image ${index}`} />
+                  <button
+                    type="button"
+                    className="text-red-600 cursor-pointer font-semibold font-sans"
+                    onClick={() => handleRemoveImage(index)}
+                  >
+                    Delete
+                  </button>
                 </div>
-                <div className='label-container'>
-                    <div className='b-label'>
-                    <label className='beds-label'>
-                        <input 
-                        type="number"
-                        className='beds-input' 
-                        name="list-beds"
-                        onChange={handleChange}
-                        value={formData.bedrooms}
-                        id="bedrooms" />
-                        <span>Beds</span>
-                    </label>
-                        <label className='baths-label'>
-                            <input 
-                            type="number" 
-                            className='baths-input'
-                            name="list-baths"
-                            
-                            id="bathrooms" />
-                            <span>Baths</span>
-                        </label>
-                    </div>
+              ))}
 
-                    <div className='price-container'>
-                    <label className='price-label'>
-                        <input type="number" 
-                         className='regular-input'
-                         name="list-regular" 
-                         onChange={handleChange}
-                         value={formData.regularPrice}
-                         required
-                         id="regularPrice" />
-                        <span>Regular price($/month)</span>
-                        
-                    </label>
-                    {
-                        formData.offer && (
-                        <label className='price-label'>
-                            <input type="number"
-                            className='discount-input'
-                            name="list-discount" 
-                            onChange={handleChange}
-                            value={formData.discountPrice}
-                            required
-                            id="discountPrice" />
-                            <span>Discounted price($/month)</span>
-                            
-                        </label>
+            <button
+              className="w-3/6 h-12 bg-sky-400 text-white rounded-lg  mx-auto text-lg font-semibold hover:bg-transparent hover:text-sky-400 hover:border-2 border-sky-400"
+              type="button"
+              disabled={loading}
+              onClick={handleImageSubmit}
+            >
+              {uploading ? "Uploading..." : "Upload Images"}
+            </button>
+            <p className="">{imageUploadError && imageUploadError}</p>
+          <button className="w-3/6 h-12 mt-5 bg-red-400 text-white rounded-lg  mx-auto text-lg font-semibold hover:bg-transparent hover:text-red-400 hover:border-2 border-red-400" disabled={loading || uploading}>
+            {loading ? "Updating...." : "Update Listing"}
+          </button>
+          </div>
 
-                        )
-                    }
+        </form>
+      </div>
 
-
-                    </div>
-                </div>
-                    
-                <div className='img-description'>
-                    <span>Images:</span>
-                    <span>The first images will be the cover (max 6)</span>
-                </div>
-                <div className='listImg-container'>
-                    <input type="file" name="product-images" id="imageUrls" className='imgList-url' onChange={(e)=>setFiles(e.target.files)} accept='images/*' multiple/>
-                    
-                    {
-                        formData.imageUrls.length > 0 && formData.imageUrls.map((url, index) => (
-                            <div key={url} className='list-imageContainer'>
-                                <img  src={url} className='list-image-url' alt={`Image ${index}`} />
-                                <button type='button' className='imageDelete-btn' onClick={() =>handleRemoveImage(index)}>Delete</button>
-                            </div>
-                        ))
-                    }
-                    
-
-                    <button className='listImage-btn' type='button' disabled={loading} onClick={handleImageSubmit}>{uploading ? 'Uploading...' : "Upload"}</button>
-                    <p className='imageList-error'>{ imageUploadError && imageUploadError}</p>
-                   
-                </div>
-                
-                <button className='listing-btn' disabled={loading || uploading}>{loading? 'Updating....': 'Update Listing'}</button>
-            </form>
-        </div>
-        
-        {error && <p className='text-red'>{error}</p>}
+      {error && <p className="">{error}</p>}
     </div>
   )
 }

@@ -164,74 +164,74 @@ export default function Profile() {
         console.log(error.message);
       }
     }
-    //firebase storage
-    // allow read;
-    // allow write; if
-    // request.resource.size < 2 * 1024 * 1024 && 
-    // request.resource.contentType.matches('image/.*')
+    
   return (
-    <div className="profile-container">
-      <h1>Profile</h1>
-      
-      
-        <div className='profile-contain'>
-        
-        <form onSubmit={handleSubmit}  className='profile-wrapper'>
-          <div className="profilePage-img">
+    <div>
+
+    <div className="w-screen h-screen flex flex-col mt-9  justify-center items-center">
+      <h1 className="text-3xl font-bold pb-5">Profile</h1>
+        <div className='w-full md:w-2/4 xl:w-2/6 2xl:w-3/12 lg:w-2/5 h-2/3 p-5 md:border-2 bg-white rounded-lg'>
+        <form onSubmit={handleSubmit}  className='flex flex-col justify-evenly items-center w-full h-full '>
+          <div className="w-16 h-16 overflow-hidden rounded-full ">
             <input type="file" name="avatarfile" id="avatar" ref={fileRef} hidden accept="image/*" onChange={(e)=> setFile(e.target.files[0])}/>
-            <img onClick={()=>fileRef.current.click()} src={formData.avatar || currentUser.avatar} className="avatar-img" alt="profile-image" />
+            <img onClick={()=>fileRef.current.click()} src={formData.avatar || currentUser.avatar} className="w-18 h-18 object-cover " alt="profile-image" />
           </div>
-          <div className="upload-percentage">
+          <div className="w-full">
             {
               fileUploadError ? (
-              <span className="upload-error">Error  In Image Upload! Try Again.(Image must be less than 2mb.)</span> ) 
+              <span className="">Error  In Image Upload! Try Again.(Image must be less than 2mb.)</span> ) 
               : filePerc > 0 && filePerc < 100 ?
-              (<span className="upload-process">{`Upload ${filePerc}%`}</span>) 
-              : filePerc === 100 ? (<span className="upload-success">Image successfully uploaded</span>):(" ")
+              (<span className="">{`Upload ${filePerc}%`}</span>) 
+              : filePerc === 100 ? (<span className="">Image successfully uploaded</span>):(" ")
             }
           </div>
-          <input type="text" name="username" placeholder='username' id="username" className='profile-i' defaultValue={currentUser.username} onChange={handleChange}/>
-          <input type="email" name="email" placeholder='email' id="email" className='profile-i' defaultValue={currentUser.email}  onChange={handleChange}/>
-          <input type="password" name="password" placeholder='password' id="password" className='profile-i' onChange={handleChange} />
-          <button className="update-btn" disabled={loading}>{loading ? 'Loading...' : 'Update'}</button>
-          <Link to='/listing' className="create-listing">Create Listing</Link>
-          <div className="link-container">
-            <span className="delete-link"  onClick={handleDeleteUser}>Delete Account</span>
-            <span className="signout-link" onClick={handleSignOut}>Signout</span>
+          <input type="text" name="username" placeholder='username' id="username" className='h-12 ps-3 rounded-3xl bg-sky-100 focus:outline-sky-400 w-full ' defaultValue={currentUser.username} onChange={handleChange}/>
+          <input type="email" name="email" placeholder='email' id="email" className='h-12 ps-3 rounded-3xl bg-sky-100 focus:outline-sky-400 w-full ' defaultValue={currentUser.email}  onChange={handleChange}/>
+          <input type="password" name="password" placeholder='password' id="password" className='h-12 ps-3 rounded-3xl bg-sky-100 focus:outline-sky-400 w-full ' onChange={handleChange} />
+          <button className="w-full h-12 mx-auto bg-slate-900 text-white rounded-3xl text-lg font-semibold hover:bg-transparent hover:border-2 hover:text-slate-900 hover:border-slate-900" disabled={loading}>{loading ? 'Loading...' : 'Update'}</button>
+          <Link to='/listing' className="w-full h-12 flex justify-center items-center bg-sky-400 text-white rounded-3xl text-lg font-semibold hover:bg-transparent hover:border-2 hover:text-sky-400 hover:border-sky-400">Create Listing</Link>
+          <div className="w-full flex justify-between items-center">
+            <span className="text-red-600 cursor-pointer"  onClick={handleDeleteUser}>Delete Account</span>
+            <span className="text-red-600 cursor-pointer" onClick={handleSignOut}>Signout</span>
           </div>
         </form>
+        <p>{ error ? error : ' '}</p>
+        <p className="text-center text-green-500">{ updateSuccess ? 'User is updated successfully!' : ''}</p>
         </div>
       
-      <p>{ error ? error : ' '}</p>
-      <p className="update-success">{ updateSuccess ? 'User is updated successfully' : ''}</p>
-      <button onClick={handleShowListings}>Show Listings</button>
-      <p>{showListingsError? 'Error in Showing Listings': ''}</p>
       
+      <button className="bg-red-400 w-3/5 md:w-1/4 m-6 h-12 rounded-3xl text-white text-xl" onClick={handleShowListings}>Show Listings</button>
+      <p>{showListingsError? 'Error in Showing Listings': ''}</p>
+      </div>
             
       {userListings && userListings.length > 0 &&
-      <div className="showListing-container">
-        <h2>Your  Listings</h2>
-      {userListings.map((listings) =>(
-        <div key={listings._id} className="single-listing">
-          <div className="name-listing">
-            <Link to={`/listings/${listings._id}`}>
-              <img src={listings.imageUrls[0]} alt="listing cover" className="img-cover" />
-            </Link>
-            <Link to={`/listings/${listings._id}`}>
-              <p className="title-cover">{listings.name}</p>
-            </Link>
-          </div>
-          <div className="deleteEdit-btn">
-              <button className="delete-btn" onClick={() =>handleListingDelete(listings._id)} >Delete</button>
-              <Link to={`/update-listing/${listings._id}`}>
-                <button className="edit-btn">Edit</button>
-              </Link>
-          </div> 
-        </div>
-      ))}
-      </div>
+     <div className="w-full h-full flex justify-center items-center flex-col">
+     <h2 className="text-2xl font-semibold ">Your Listings</h2>
+     {userListings.map((listings) => (
+       <div key={listings._id} className="w-3/4 md:w-3/4 lg:w-3/5 xl:w-3/6 h-full md:h-48  flex justify-between items-center md:flex-row flex-col border-2 p-3 my-3">
+         <div className="w-full md:w-3/4 h-full  flex justify-start items-center md:flex-row flex-col">
+           <Link className=" w-full md:w-3/5 lg:w-3/6 xl:w-2/5 md:h-full h-80 bg-red-200 overflow-hidden mb-3 md:mb-0 md:mr-3" to={`/listings/${listings._id}`}>
+             <img src={listings.imageUrls[0]} alt="listing cover" className="w-full h-full object-cover" />
+           </Link>
+           <div className="w-full h-28 md:w-2/3 md:h-auto md:mb-3 md:ml-3">
+             <Link to={`/listings/${listings._id}`}>
+               <div className="w-full h-full ">{listings.name}</div>
+             </Link>
+           </div>
+         </div>
+         <div className="flex flex-row md:justify-evenly justify-between items-center w-full  h-full md:flex-col md:items-start md:w-1/4">
+           <button className="w-32 h-10 bg-red-600 rounded-3xl text-white font-bold  " onClick={() => handleListingDelete(listings._id)}>Delete</button>
+           <Link to={`/update-listing/${listings._id}`}>
+             <button className="w-32 h-10 bg-sky-600 rounded-3xl text-white font-bold">Edit</button>
+           </Link>
+         </div>
+       </div>
+     ))}
+   </div>
+   
       }
        
+    
     </div>
   )
 }

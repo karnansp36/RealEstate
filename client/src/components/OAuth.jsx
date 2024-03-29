@@ -39,7 +39,7 @@ export default function OAuth() {
     };
   return (
     
-         <button onClick={handleGoogleClick} type='button' id='signup-google'>Sign Up with google</button> 
+         <button className='w-full h-12 mx-auto text-white bg-sky-500 rounded-3xl text-lg font-semibold hover:bg-transparent hover:border-2 flex items-center hover:text-sky-400 hover:border-sky-400' onClick={handleGoogleClick} type='button' id='signup-google'><img className='w-10 h-8 ps-2' src="https://cdn-icons-png.flaticon.com/128/720/720255.png" alt="" /><span className='w-3/4 text-center'>Sign Up with google</span></button> 
     
   )
 }

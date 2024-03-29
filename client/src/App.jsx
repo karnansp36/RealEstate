@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './components/Style.scss';
+import './components/Styles.css';
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
 import Signup from './pages/Signup'
 import Signin from './pages/Signin'
@@ -12,7 +13,7 @@ import Profile from './pages/Profile';
 import Listing from './pages/Listing';
 import UpdateListing from './pages/UpdateListing';
 import Listings from './pages/Listings';
-
+import SearchList from './pages/SearchList';
 function App() {
 
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path='/signin' element={<Signin/>}/>
           <Route path='/signup' element={<Signup/>}/>
           <Route path='/listings/:listingId' element={<Listings/>}/>
+          <Route path='/search' element={<SearchList/>}/>
           <Route element={<PrivateRoute/>}>
             <Route path='/profile'element={<Profile/>}/>
             <Route path='/listing' element={<Listing/>}/>

@@ -44,23 +44,21 @@ export default function Signup() {
    
   };
   return (
-    <div>
+    <div className='flex flex-col justify-center items-center  w-screen h-screen'>
       
-      <div className='signup-container'>
-        <div className='signup-contain'>
-        
-        <form onSubmit={handleSubmit} className='signup-wrapper'>
-          <input type="text" name="username" placeholder='username' id="username" className='signup-i' onChange={handleChange}/>
-          <input type="email" name="email" placeholder='email' id="email" className='signup-i' onChange={handleChange}/>
-          <input type="password" name="password" placeholder='password' id="password" className='signup-i'  onChange={handleChange}/>
-          <button id='signup' disabled={loading}>{loading? 'Loading...' : 'Sign Up'}</button>
-          <OAuth/>
+      <div className='w-full md:w-2/4 xl:w-2/6 2xl:w-3/12 lg:w-2/5 h-2/3 p-5 border-2 bg-white rounded-lg'>
+        <div className='text-2xl font-semibold p-5 w-full text-center'>Sign<span className='text-sky-400'>Up</span> to Real<span className='text-sky-400'>Estate</span></div>
+        <div className=' mx-auto w-full h-2/3   '>
+          <form onSubmit={handleSubmit} className='flex flex-col justify-evenly w-full h-full  '>
+            <input type="text" name="username" placeholder='username' id="username" className='h-12 ps-3 rounded-3xl bg-sky-50 focus:outline-sky-400' onChange={handleChange}/>
+            <input type="email" name="email" placeholder='email' id="email" className='h-12 ps-3 rounded-3xl bg-sky-50 focus:outline-sky-400' onChange={handleChange}/>
+            <input type="password" name="password" placeholder='password' id="password" className='h-12 ps-3 rounded-3xl bg-sky-50 focus:outline-sky-400'  onChange={handleChange}/>
+            <button id='signup' className='w-full h-12 mx-auto bg-green-600 text-white rounded-3xl text-lg font-semibold hover:bg-transparent hover:border-2 hover:text-green-600 hover:border-green-600' disabled={loading}>{loading? 'Loading...' : 'Sign Up'}</button>
+            <OAuth/>
           </form>
-          
-          <div>already have account <Link to="/signin">signin</Link></div>
-        
+        <div className='w-full text-center'>already have account <Link to="/signin" className='text-sky-400 text-xl font-semibold'>SignIn</Link></div>
+        {error && <div className='w-full text-center pt-7 text-lg text-red-600'>{error}</div>}
         </div>
-        {error && <p className='error-text'>{error}</p>}
       </div>
       
     </div>

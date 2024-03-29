@@ -1,0 +1,27 @@
+*{
+  box-sizing: border-box;
+  margin:0;
+}
+/* Navbar Styles */
+.link-elements{
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+    font-family: sans-serif;
+  }
+  
+  .link-elements:after {
+    display:block;
+    content: '';
+    width: inherit;
+    border-bottom: solid 3px rgb(66, 189, 255);  
+    transform: scaleX(0);  
+    transition: transform 250ms ease-in-out;
+  }
+  .link-elements:active{
+    transform: scaleX(1);
+  }
+  
+ .link-elements:hover:after { transform: scaleX(1); }
+  
+ 
