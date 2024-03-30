@@ -92,15 +92,15 @@ export default function Navbar() {
                 About
               </Link>
              
-              <Link to="/profile" className="w-12 rounded-full overflow-hidden">
+              <Link to="/profile" className="">
                 {currentUser ? (
                   <img
-                    className="object-cover w-full aspect-square"
+                    className="w-12 h-12 rounded-full overflow-hidden object-cover  "
                     src={currentUser.avatar}
                     alt="profile picture"
                   />
                 ) : (
-                  <div className="text-lg font-semibold font-sans border-2 px-2 rounded-2xl border-sky-400 text-sky-400 hover:bg-sky-400 hover:text-white">
+                  <div className="w-24 h-9 flex justify-center  text-lg font-semibold font-sans border-2 px-2 rounded-2xl border-sky-400 text-sky-400 hover:bg-sky-400 hover:text-white">
                     SignIn
                   </div>
                 )}
@@ -135,10 +135,10 @@ export default function Navbar() {
             About
           </Link>
           
-          <Link to="/profile" className="w-16 h-16 rounded-full overflow-hidden">
+          <Link to="/profile" className="">
             {currentUser ? (
               <img
-                className="object-cover w-full aspect-square"
+                className="w-16 h-16 rounded-full overflow-hidden object-cover "
                 src={currentUser.avatar}
                 alt="profile picture"
               />

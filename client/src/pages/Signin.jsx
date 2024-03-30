@@ -42,7 +42,7 @@ export default function Signin() {
   return (
     <div className='flex flex-col justify-center items-center  w-screen h-screen'>
       
-      <div className='w-full md:w-2/4 xl:w-2/6 2xl:w-3/12 lg:w-2/5 h-2/3 p-5 border-2 bg-white rounded-lg'>
+      <div className='w-full md:w-2/4 xl:w-2/6 2xl:w-3/12 lg:w-2/5 h-2/3 p-5 md:border-2 bg-white rounded-lg'>
         <div className='text-2xl font-semibold p-5 w-full text-center'>Sign<span className='text-sky-400'>In</span> to Real<span className='text-sky-400'>Estate</span></div>
         <div className=' mx-auto w-full h-2/3   '>
           <form onSubmit={handleSubmit} className='flex flex-col justify-evenly w-full h-full  '>
