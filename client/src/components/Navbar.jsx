@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import "./Style.scss";
 import { useSelector } from "react-redux";
 import { FaSearch } from "react-icons/fa";
 import { IoMenu } from "react-icons/io5";
