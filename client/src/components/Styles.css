@@ -23,5 +23,13 @@
   }
   
  .link-elements:hover:after { transform: scaleX(1); }
-  
  
+ 
+
+ /* Side Bar  */
+.showBlock{
+  transform: translateX(0);
+}
+.showHidden{
+  transform: translateX(-100%);
+}

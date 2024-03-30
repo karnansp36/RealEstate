@@ -13,6 +13,7 @@ mongoose.connect(process.env.MONGO).then(() => {
     console.log(err);
 });
 
+const __dirname = path.resolve();
 
 const app = express();
 
@@ -24,6 +25,12 @@ app.use('/api/user', userRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/listing', listingRouter)
 
+app.use(express.static(path.join(__dirname, '/client/dist')));
+
+
+app.get('*', (req, res) =>{
+    res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
+})
 
 app.use((err, req, res, next)=>{
     const statusCode = err.statusCode || 500;
