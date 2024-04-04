@@ -13,6 +13,7 @@ import Listing from './pages/Listing';
 import UpdateListing from './pages/UpdateListing';
 import Listings from './pages/Listings';
 import SearchList from './pages/SearchList';
+import NotFoundPage from './pages/NotFoundPage';
 function App() {
 
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path='/signup' element={<Signup/>}/>
           <Route path='/listings/:listingId' element={<Listings/>}/>
           <Route path='/search' element={<SearchList/>}/>
+          <Route path='/*' element={<NotFoundPage/>}/>
           <Route element={<PrivateRoute/>}>
             <Route path='/profile'element={<Profile/>}/>
             <Route path='/listing' element={<Listing/>}/>
